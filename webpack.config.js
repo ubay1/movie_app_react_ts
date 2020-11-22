@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
     mode: 'none',
@@ -41,12 +42,20 @@ module.exports = {
     },
     // target: 'web',
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.css']
+        extensions: ['.ts', '.tsx', '.js', '.css'],
+        alias: {
+            jquery: "jquery/src/jquery"
+        }
     },
     plugins: [
         new HtmlWebpackPlugin({
             template: path.join(__dirname, 'public', 'index.html')
         }),
-        new FaviconsWebpackPlugin('./src/assets/img/favicon-32x32.png')
+        new FaviconsWebpackPlugin('./src/assets/img/favicon-32x32.png'),
+        new webpack.ProvidePlugin({
+            $: path.resolve(path.join(__dirname, 'node_modules/jquery')),
+            jQuery: path.resolve(path.join(__dirname, 'node_modules/jquery')),
+            'window.jQuery': path.resolve(path.join(__dirname, 'node_modules/jquery')),
+        }),
     ]
 }

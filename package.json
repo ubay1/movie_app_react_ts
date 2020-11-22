@@ -2,6 +2,7 @@
   "name": "react_typescript_webpack",
   "version": "1.0.0",
   "description": "Build UI that scales",
+  "typings": "dist/index",
   "scripts": {
     "build:tailwind": "tailwind build src/css/tailwind.src.css  -o src/css/tailwind.css",
     "watch:tailwind": "chokidar 'src/**/*.css' 'src/**/*.scss' --ignore src/tailwind.output.css -c 'npm run build:tailwind'",
@@ -20,6 +21,8 @@
   "license": "ISC",
   "dependencies": {
     "@types/react-router-dom": "^5.1.6",
+    "axios": "^0.21.0",
+    "jquery": "^3.5.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.2.0"
@@ -31,7 +34,6 @@
     "@types/react-dom": "^16.0.5",
     "@types/webpack": "4.1.4",
     "autoprefixer": "^9.8.6",
-    "axios": "^0.21.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.2.1",
     "babel-preset-env": "^1.7.0",
@@ -43,6 +45,7 @@
     "node-sass": "^5.0.0",
     "npm-run-all": "^4.1.5",
     "postcss-cli": "^8.2.0",
+    "react-alice-carousel": "^2.0.2",
     "sass-loader": "^10.1.0",
     "style-loader": "^2.0.0",
     "tailwindcss": "^1.9.6",

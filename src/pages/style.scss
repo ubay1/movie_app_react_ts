@@ -1,0 +1,225 @@
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+@media (min-width: 1024px) {
+        
+    .bg_img {
+        width: 200px !important;
+        height: 300px !important;
+        
+        img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    .judul {
+        position: relative;
+        height: 40px;
+        color: white;
+        background-color: #c53030;
+        padding: 0px;
+        top: unset;
+        bottom: 0px;
+        right: 0px;
+        left: 0px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        .text {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 200px;
+        }
+    }
+
+    .rating {
+        position: absolute;
+        top: 0px;
+        background-color: yellow;
+        padding: 10px;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .bg_img {
+        width: 200px !important;
+        height: 300px !important;
+
+        img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    .judul {
+        position: relative;
+        height: 40px;
+        color: white;
+        background-color: #c53030;
+        padding: 0px;
+        top: unset;
+        bottom: 0px;
+        right: 0px;
+        left: 0px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        .text {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 200px;
+        }
+    }
+
+    .rating {
+        position: absolute;
+        top: 0px;
+        background-color: yellow;
+        padding: 10px;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 768px) {
+    .bg_img {
+        width: 200px !important;
+        height: 300px !important;
+
+        img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    .judul {
+        position: relative;
+        height: 40px;
+        color: white;
+        background-color: #c53030;
+        padding: 0px;
+        top: unset;
+        bottom: 0px;
+        right: 0px;
+        left: 0px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        .text {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 200px;
+        }
+    }
+
+    .rating {
+        position: absolute;
+        top: 0px;
+        background-color: yellow;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .grid_container {
+        // display: grid;
+        // grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        .bg_img {
+            max-height: 20em;
+            height: 100%;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        .judul {
+            position: relative;
+            height: 40px;
+            color: white;
+            background-color: #c53030;
+            padding: 10px;
+            top: unset;
+            bottom: 0px;
+            right: 0px;
+            left: 0px;
+            text-align: center;
+        }
+
+        .rating {
+            position: absolute;
+            top: 8px;
+            background-color: yellow;
+            padding: 10px;
+        }
+    }
+
+    .bg_img {
+        width: 200px !important;
+        height: 300px !important;
+
+        img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    .judul {
+        position: relative;
+        height: 40px;
+        color: white;
+        background-color: #c53030;
+        padding: 0px;
+        top: unset;
+        bottom: 0px;
+        right: 0px;
+        left: 0px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        .text {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            width: 200px;
+        }
+    }
+
+    .rating {
+        position: absolute;
+        top: 0px;
+        background-color: yellow;
+        padding: 10px;
+    }
+}

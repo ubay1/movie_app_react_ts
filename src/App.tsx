@@ -6,11 +6,19 @@ import {
     Link
 } from "react-router-dom";
 
-import {Header} from './components/Header'
+import {Header} from './components/header'
+import {Home} from './pages/home'
 
 export default function App()
 {
     return(
-        <Header />
+        <Router>
+            <div>
+                <Header judulnya="Movlix" />
+                <Switch>
+                    <Route exact path='/' component={Home} />
+                </Switch>
+            </div>
+        </Router>
     );
 }
