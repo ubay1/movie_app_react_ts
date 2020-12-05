@@ -2,7 +2,7 @@ import Axios, { AxiosInstance } from "axios";
 
 export const BaseUrl  = 'https://api.themoviedb.org/3/';
 export const ApiKey   = '582e10d63a109e22c925d875f715c562';
-export const ImageUrl = 'https://image.tmdb.org/t/p/w500/'
+export const ImageUrl = 'https://image.tmdb.org/t/p/w500'
 
 export function AxiosNormal<AxiosInstance>(timeout?: number) {
     let instance = Axios.create({
