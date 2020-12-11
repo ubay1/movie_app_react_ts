@@ -2,21 +2,23 @@ import React from 'react';
 
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
-import { HTTPDetailMovie, HTTPNowPlaying, HTTPPopuler, HTTPUpComing } from '../../utils/http';
-import { ImageUrl } from '../../utils/helper';
-import { ModalComp } from '../components/Modal';
+import { HTTPDetailMovie, HTTPNowPlaying, HTTPPopuler, HTTPUpComing } from '../../../utils/http';
+import { ImageUrl } from '../../../utils/helper';
+import { ModalComp } from '../../components/Modal';
+
+import { Link } from 'react-router-dom';
 
 import Rodal from 'rodal';
 import 'rodal/lib/rodal.css';
 
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch } from "../store";
-import { RootState } from "../store/rootReducers";
-import { setData } from "../store/detailMovie";
+import { AppDispatch } from "../../store";
+import { RootState } from "../../store/rootReducers";
+import { setData } from "../../store/detailMovie";
 
 import ReactModal from 'react-modal';
 
-import './style.scss';
+import '../style.scss';
 
 interface IDetailMovie {
     adult: boolean;
@@ -73,6 +75,7 @@ export function Home() {
             console.log(error)
         }
     }
+    
     const NowPlaying = () => {
         try {
             HTTPNowPlaying(dataUserInput).then(res => {
@@ -87,7 +90,6 @@ export function Home() {
     React.useEffect(() => {
         NowPlaying()
         populer()
-        eventhandler
     }, [])
 
     React.useEffect(() => {
@@ -112,7 +114,12 @@ export function Home() {
         <div className="mb-4">
             <span className=" shadow-md bg-black p-2 font-bold text-white">
                 Now Playing
+
+               
             </span>
+                <Link to="/learn" className="bg-black p-2 font-bold text-white ml-2"> 
+                goto learn
+                </Link>
         </div>
         <div className="flex overflow-x-scroll overflow-y-hidden mb-5">
         { 
