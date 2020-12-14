@@ -155,18 +155,6 @@ export function Home() {
                 )
             })
         }
-
-        <Rodal visible={visibleModal} onClose={hide}>
-            {
-                adakahDataMovie.data.length !== 0 ?
-                // console.log(adakahDataMovie.data) 
-                <span>{JSON.parse(JSON.stringify(adakahDataMovie.data)).map((data: any) => {
-                    data.homepage
-                })}</span>
-                :
-                console.log('gaaada datanya')
-            }
-        </Rodal>
         </div>
 
         <div className="mb-4">

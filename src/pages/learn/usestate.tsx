@@ -74,7 +74,7 @@ function TodoForm({ addTodo }) {
     <form onSubmit={handleSubmit}>
       <input
         type="text"
-        className="border shadow-md rounded-md p-1 mb-2"
+        className="border shadow-md p-1 mb-2"
         placeholder="add todo"
         value={value}
         onChange={(e) => {
@@ -124,7 +124,7 @@ const usestate = () => {
         <TodoForm
           addTodo={addTodo}
         />
-        <div className="font-bold rounded-md border shadow-md">
+        <div className="font-bold border shadow-md">
           {todos.map((todo: any, index: any) => {
             // console.log(todo.text)
             return (
