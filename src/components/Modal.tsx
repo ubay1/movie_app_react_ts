@@ -1,6 +1,4 @@
 import React from 'react';
-import Rodal from 'rodal';
-import 'rodal/lib/rodal.css';
 import { HTTPDetailMovie } from '../../utils/http';
 import axios from "axios";
 
@@ -12,17 +10,6 @@ interface IPropsModal {
 
 export const ModalComp = (props: IPropsModal) => {
     const [dataDetailMovie, setDataDetailMovie] = React.useState([])
-    
-    // const [visibleModal, setVisibleModal] = React.useState(false)
-
-    // const show = () => {
-    //     console.log('test')
-    //     setVisibleModal(true)
-    // }
-
-    // const hide = () => {
-    //     setVisibleModal(false)
-    // }
 
     const dataUserInput = {
         movie_id: props.movie_id,

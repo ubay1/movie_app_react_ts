@@ -6,19 +6,20 @@ import { HTTPDetailMovie, HTTPNowPlaying, HTTPPopuler, HTTPUpComing } from '../.
 import { ImageUrl } from '../../../utils/helper';
 import { ModalComp } from '../../components/Modal';
 
-import { Link } from 'react-router-dom';
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal';
 
-import Rodal from 'rodal';
-import 'rodal/lib/rodal.css';
+import { Link } from 'react-router-dom';
 
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../store";
 import { RootState } from "../../store/rootReducers";
 import { setData } from "../../store/detailMovie";
 
-import ReactModal from 'react-modal';
-
 import '../style.scss';
+import './custom-overlay-modal.css';
+
+import axios from 'axios';
 
 interface IDetailMovie {
     adult: boolean;
@@ -56,9 +57,9 @@ export function Home() {
     const [dataDetailMovie, setDataDetailMovie] = React.useState([])
     const adakahDataMovie = useSelector((state: RootState) => state.detailMovie)
 
-    const dataJson: any[] = []
-
     const [visibleModal, setVisibleModal] = React.useState(false)
+    const onOpenModal = () => setVisibleModal(true);
+    const onCloseModal = () => setVisibleModal(false);
 
     const dataUserInput = {
         language: 'en-EN',
@@ -92,21 +93,36 @@ export function Home() {
         populer()
     }, [])
 
-    React.useEffect(() => {
-        console.log(adakahDataMovie.data);
-    }, [adakahDataMovie.data])
+    const httpDetailMovie = async (param: any) => {
+        try {
+            const resp = await HTTPDetailMovie({
+                movie_id: param,
+                language: 'en-US',
+            });
 
-    const eventhandler = async (data: any, visible: boolean) => {
-        // setDataDetailMovie(data)
-        dispatch(setData({
-            data: data
-        }))
-        setVisibleModal(visible)
+            // if (dataDetailMovie.length === 0 ) {
+                // console.log('detailmovie = 0')
+                const adddata = [...dataDetailMovie, resp]
+                setDataDetailMovie(adddata)
+            // } else {
+            //     console.log('detailmovie = 1')
+            //     // delete data 
+            //     const dataMovie = [...dataDetailMovie];
+            //     dataMovie.splice(0, 1);
+            //     setDataDetailMovie(dataMovie)
+            //     // add data
+            //     const addMovie = [...dataMovie, resp]
+            //     setDataDetailMovie(addMovie)
+            // }
+            onOpenModal()
+        } catch (error) {
+            console.log(error)
+        }
     }
-
-    const hide = () => {
-        setVisibleModal(false)
-    }
+    
+    React.useCallback(()=> {
+        console.log(dataDetailMovie)
+    }, [dataDetailMovie])
 
     
     return(
@@ -133,11 +149,107 @@ export function Home() {
                                 alt={`${data.title} image`}
                             />
                             <div className="overlay_img">
-                                <ModalComp 
-                                    textButton="detail"
-                                    movie_id={data.id}
-                                    onChange={eventhandler}
-                                />
+                                <button
+                                    onClick={() => {
+                                        httpDetailMovie(data.id)
+                                    }}
+                                    className="detail"
+                                >
+                                    Detail
+                                </button>
+                                <Modal 
+                                    open={visibleModal} 
+                                    onClose={() => {
+                                        const dataMovie = [...dataDetailMovie];
+                                        dataMovie.splice(0, 1);
+                                        setDataDetailMovie(dataMovie)
+
+                                        onCloseModal()
+                                    }} 
+                                    center
+                                    closeOnOverlayClick={false}
+                                    closeOnEsc={false}
+                                    classNames={{
+                                        overlay: 'customOverlay'
+                                    }}
+                                >
+                                    {
+                                        dataDetailMovie.map((item: any, index: any) => {
+                                            return(
+                                                <div 
+                                                    key={`idx-${index}`}
+                                                    style={{
+                                                        display: 'flex',
+                                                        justifyContent: 'space-between',
+                                                    }}
+                                                >
+                                                    <img
+                                                        style={{ height: '100%', width: '30%', objectFit: 'cover', objectPosition: 'center',pointerEvents: 'none' }}
+                                                        src={`${ImageUrl}${item.poster_path}`}
+                                                        alt={`${item.title} image`}
+                                                    />
+
+                                                    <div
+                                                        style={{
+                                                            display: 'flex',
+                                                            flexDirection: 'column',
+                                                            width: '100%',
+                                                            paddingLeft: '20px'
+                                                        }}
+                                                    >
+                                                        <table>
+                                                            <tbody>
+                                                            <tr>
+                                                                <td style={{width:'20%'}}>title</td>
+                                                                <td style={{width: '10%'}}>:</td>
+                                                                <td>{item.title}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style={{width:'20%'}}>genres</td>
+                                                                <td style={{width: '10%'}}>:</td>
+                                                                <td style={{
+                                                                    display: 'inline-flex',
+                                                                }}>
+                                                                    {
+                                                                        item.genres.map((item2: any, index: any) => {
+                                                                            return (
+                                                                                <div 
+                                                                                    key={`id-${item2.id}`}
+                                                                                    style={{
+                                                                                        backgroundColor: 'red',
+                                                                                        margin: '2px',
+                                                                                        padding: '3px'
+                                                                                    }}
+                                                                                >
+                                                                                    {item2.name}
+                                                                                </div>
+                                                                            );
+                                                                        })
+                                                                    }
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+
+                                                        {/* <div>title: {item.title}</div>
+                                                        <div 
+                                                            style={{
+                                                                display: 'flex',
+                                                                flexDirection: 'row'
+                                                            }}
+                                                        >genres: {
+                                                            item.genres.map((item2: any) => {
+                                                                return(
+                                                                    <div key={`id-${item2.id}`}>{item2.name}</div>
+                                                                );
+                                                            })
+                                                        }</div> */}
+                                                    </div>
+                                                </div>
+                                            );
+                                        })
+                                    }
+                                </Modal>
                                 <div className="watch">Watch Trailer</div>
                             </div>
                         </div>

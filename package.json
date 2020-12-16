@@ -27,11 +27,10 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-feather": "^2.0.9",
-    "react-modal": "^3.12.1",
     "react-redux": "^7.2.2",
+    "react-responsive-modal": "^6.0.0",
     "react-router-dom": "^5.2.0",
-    "redux": "^4.0.5",
-    "rodal": "^1.8.1"
+    "redux": "^4.0.5"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.12.1",

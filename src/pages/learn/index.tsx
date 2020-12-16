@@ -4,6 +4,7 @@ import Effect from './useeffect';
 import Ref from './useRef';
 import Callback from './usecallback';
 import Memo from './usememo';
+import Context from './usecontext';
 
 export const Learn = () => {
   return(
@@ -13,6 +14,7 @@ export const Learn = () => {
       <Ref />
       <Callback />
       <Memo />
+      <Context />
     </>
   );
 }

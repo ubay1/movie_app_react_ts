@@ -41,7 +41,9 @@ const usememo = () => {
         Memoize adalah sebuah teknik yang digunakan mengoptimalkan sebuah program.
         Caranya adalah dengan menyimpan hasil dari program tersebut, istilah kerennya caching.
         Jadi, ketika program tersebut dipanggil kembali dengan input yang sama, maka tidak perlu lagi melakukan kalkulasi ulang.
-        Jadi prosesnya akan jadi lebih cepat.
+        Jadi prosesnya akan jadi lebih cepat. <br/><br/>
+
+        Looping di function tersebut hanya untuk mensimulasikan kalkulasi yang membutuhkan waktu yang cukup lama.
       </div>
          
         <button 

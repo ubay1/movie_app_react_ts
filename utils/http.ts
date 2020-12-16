@@ -33,11 +33,8 @@ export async function HTTPDetailMovie(param: detailMovie) {
     // console.log(param)
     try {
         const resp1 = await AxiosNormal(2000).get(`${BaseUrl}movie/${param.movie_id}?api_key=${ApiKey}&language=${param.language}`)
-        // .then((res) => {
-        console.log(resp1.data)
+        // console.log(resp1.data)
         return resp1.data
-        // })
-        // const parseData = JSON.parse(JSON.stringify(resp1.data))
     } catch (error) {
         console.log(error.message)
     }
